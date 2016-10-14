@@ -51,14 +51,6 @@
             this.option1 = new System.Windows.Forms.CheckBox();
             this.option2 = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.step3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.step4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.option1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.option2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,7 +67,7 @@
             // 
             // costButton
             // 
-            this.costButton.Location = new System.Drawing.Point(332, 387);
+            this.costButton.Location = new System.Drawing.Point(355, 398);
             this.costButton.Name = "costButton";
             this.costButton.Size = new System.Drawing.Size(100, 23);
             this.costButton.TabIndex = 4;
@@ -202,7 +194,7 @@
             this.outputLabel.BackColor = System.Drawing.Color.White;
             this.outputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outputLabel.ForeColor = System.Drawing.Color.Navy;
-            this.outputLabel.Location = new System.Drawing.Point(38, 387);
+            this.outputLabel.Location = new System.Drawing.Point(13, 348);
             this.outputLabel.Name = "outputLabel";
             this.outputLabel.Size = new System.Drawing.Size(0, 13);
             this.outputLabel.TabIndex = 26;
@@ -353,7 +345,6 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Navy;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.newToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -361,68 +352,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(705, 24);
             this.menuStrip1.TabIndex = 35;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.step3ToolStripMenuItem,
-            this.step4ToolStripMenuItem});
-            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.Red;
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // step3ToolStripMenuItem
-            // 
-            this.step3ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem});
-            this.step3ToolStripMenuItem.Name = "step3ToolStripMenuItem";
-            this.step3ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.step3ToolStripMenuItem.Text = "Step 3:";
-            // 
-            // pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem
-            // 
-            this.pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem.Name = "pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem";
-            this.pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem.Size = new System.Drawing.Size(449, 22);
-            this.pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem.Text = "Please express the amount of fuel in your tank as a percent in a decimal";
-            // 
-            // step4ToolStripMenuItem
-            // 
-            this.step4ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.option1ToolStripMenuItem,
-            this.option2ToolStripMenuItem});
-            this.step4ToolStripMenuItem.Name = "step4ToolStripMenuItem";
-            this.step4ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
-            this.step4ToolStripMenuItem.Text = "Step 4:";
-            // 
-            // option1ToolStripMenuItem
-            // 
-            this.option1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem});
-            this.option1ToolStripMenuItem.Name = "option1ToolStripMenuItem";
-            this.option1ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.option1ToolStripMenuItem.Text = "Option 1:";
-            // 
-            // pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem
-            // 
-            this.pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem.Name = "pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem";
-            this.pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem.Size = new System.Drawing.Size(482, 22);
-            this.pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem.Text = "Please express the how full you want your tank to be as a percent in a decimal";
-            // 
-            // option2ToolStripMenuItem
-            // 
-            this.option2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem});
-            this.option2ToolStripMenuItem.Name = "option2ToolStripMenuItem";
-            this.option2ToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.option2ToolStripMenuItem.Text = "Option 2:";
-            // 
-            // pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem
-            // 
-            this.pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem.Name = "pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuIte" +
-    "m";
-            this.pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem.Size = new System.Drawing.Size(511, 22);
-            this.pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem.Text = "Please express the amount of money you want to spend without spaces or symbols";
             // 
             // aboutToolStripMenuItem
             // 
@@ -468,7 +397,7 @@
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(332, 358);
+            this.changeButton.Location = new System.Drawing.Point(355, 235);
             this.changeButton.Name = "changeButton";
             this.changeButton.Size = new System.Drawing.Size(100, 23);
             this.changeButton.TabIndex = 39;
@@ -603,14 +532,6 @@
         private System.Windows.Forms.CheckBox option1;
         private System.Windows.Forms.CheckBox option2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem step3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pleaseExpressTheAmountOfFuelInYourTankAsAPercentInADecimalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem step4ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem option1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pleaseExpressTheHowFullYouWantYourTankToBeAsAPercentInADecimalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem option2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pleaseExpressTheAmountOfMoneyYouWantToSpendWithoutSpacesOrSymbolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;

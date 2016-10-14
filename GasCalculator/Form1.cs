@@ -91,7 +91,6 @@ namespace GasCalculator
             Graphics box = CreateGraphics();
             SolidBrush whiteBrush = new SolidBrush(Color.White);
             SolidBrush redBrush = new SolidBrush(Color.Red);
-            box.FillRectangle(whiteBrush, 30, 365, 250, 65);
             box.FillRectangle(redBrush, 500, 375, 150, 65);
 
             try
@@ -130,14 +129,16 @@ namespace GasCalculator
                 else
                 {
                     message = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
-
                     if (message > 100)
                     {
-                        outputLabel.Text = "Your tank is over filled."; //try to find a way to display the amount that amke it 100% full. 
+                        message = (1 - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
+                        outputLabel.Text = "Your tank is over filled.\nThe amount of money needed\nto fill your tank is: "
+                        + message.ToString(".##");           
                     }
                     else
                     {
-                        outputLabel.Text = "Your tank is:" + message.ToString(".##") + "% full.";
+                        message = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
+                        outputLabel.Text = "Your tank is:" + message.ToString(".##") + " % full.";
                     }                   
                 }
             }
@@ -203,7 +204,7 @@ namespace GasCalculator
                 outputLabel.Text = "Please remember to fill all requirements. \nCheck the help section above if needed.";
             }
         }
-   
+
         private void printButton_Click(object sender, EventArgs e)//Prints Receipt
         {
             int loopNumber = 300;
@@ -215,14 +216,69 @@ namespace GasCalculator
                 xr++;
             }
 
+            //message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
+            //outputLabel.Text = "The cost is: " + message.ToString("C");
+
             Graphics print = this.CreateGraphics();
             SolidBrush whiteBrush = new SolidBrush(Color.White);
             SolidBrush textBrush = new SolidBrush(Color.Black);
-            Font printFont = new Font("Courier New", 12);                       
+            Font printFont = new Font("Courier New", 12);
 
             print.FillRectangle(whiteBrush, 735, 20, 225, 400);
             print.DrawString("THE GAS CORNER", printFont, textBrush, 765, 30);
-            print.DrawString(Convert.ToString(DateTime.Today), printFont, textBrush, 765, 45);     
+            print.DrawString(Convert.ToString(DateTime.Today), printFont, textBrush, 765, 45);
+
+            double gasRate;
+            double vehicalType;
+            gasIn = fuelAmount.Text;
+            gasOut = fuelNeeded.Text;
+            tender = tenderBox.Text;
+
+            if (regCheck.Checked)
+            {
+                gasRate = GAS_REGULAR; 
+            }
+            else if (midCheck.Checked)
+            {
+                gasRate = GAS_MID;
+            }
+            else
+            {
+                gasRate = GAS_PRIEMIUM;
+            }
+
+            if (carCheck.Checked)
+            {
+                vehicalType = carV;
+            }
+            else if (truckCheck.Checked)
+            {
+                vehicalType = truckV;
+            }
+            else 
+            {
+                vehicalType = miniV;
+            }
+
+            message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType; //cost    
+
+            print.DrawString("Sub Total:", printFont, textBrush, 765, 60);
+            print.DrawString(message.ToString("C"), printFont, textBrush, 795, 90);
+            print.DrawString("Taxes: 13%", printFont, textBrush, 765, 120);
+
+            message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 0.13;
+            print.DrawString(message.ToString("C"), printFont, textBrush, 795, 150);
+
+            message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 1.13;
+            print.DrawString("Total:", printFont, textBrush, 765, 180);
+            print.DrawString(message.ToString("C"), printFont, textBrush, 795, 210);
+
+            print.DrawString("Amount of gas:", printFont, textBrush, 765, 240);
+            message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * vehicalType;
+            print.DrawString(message.ToString("##.## L"), printFont, textBrush, 795, 270);
+
+            print.DrawString("Thank you.", printFont, textBrush, 765, 300);
+
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)//Resets everything 
@@ -276,11 +332,15 @@ namespace GasCalculator
             {
                 option1.Enabled = false;
                 fuelNeeded.Enabled = false;
+                tenderBox.Enabled = false;
+                changeButton.Enabled = false;
             }
             else
             {
                 option1.Enabled = true;
                 fuelNeeded.Enabled = true;
+                tenderBox.Enabled = true;
+                changeButton.Enabled = true;
             }
         }
 
