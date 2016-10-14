@@ -31,7 +31,6 @@
             this.costButton = new System.Windows.Forms.Button();
             this.title = new System.Windows.Forms.Label();
             this.gasType = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.regularBox = new System.Windows.Forms.TextBox();
             this.premiumBox = new System.Windows.Forms.TextBox();
             this.midBox = new System.Windows.Forms.TextBox();
@@ -67,9 +66,10 @@
             // 
             // costButton
             // 
-            this.costButton.Location = new System.Drawing.Point(355, 398);
+            this.costButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costButton.Location = new System.Drawing.Point(356, 377);
             this.costButton.Name = "costButton";
-            this.costButton.Size = new System.Drawing.Size(100, 23);
+            this.costButton.Size = new System.Drawing.Size(126, 56);
             this.costButton.TabIndex = 4;
             this.costButton.Text = "Calculate Total";
             this.costButton.UseVisualStyleBackColor = true;
@@ -96,15 +96,6 @@
             this.gasType.Size = new System.Drawing.Size(288, 18);
             this.gasType.TabIndex = 9;
             this.gasType.Text = "Step 1: Select your gas type";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(148, 258);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "remember the nickle round";
             // 
             // regularBox
             // 
@@ -335,9 +326,9 @@
             this.option2.ForeColor = System.Drawing.Color.White;
             this.option2.Location = new System.Drawing.Point(356, 294);
             this.option2.Name = "option2";
-            this.option2.Size = new System.Drawing.Size(337, 19);
+            this.option2.Size = new System.Drawing.Size(345, 19);
             this.option2.TabIndex = 34;
-            this.option2.Text = "Option 2: How much money do yo want to spend?";
+            this.option2.Text = "Option 2: How much money do you want to spend?";
             this.option2.UseVisualStyleBackColor = true;
             this.option2.CheckStateChanged += new System.EventHandler(this.option2_CheckStateChanged);
             // 
@@ -492,7 +483,6 @@
             this.Controls.Add(this.midBox);
             this.Controls.Add(this.premiumBox);
             this.Controls.Add(this.regularBox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.gasType);
             this.Controls.Add(this.title);
             this.Controls.Add(this.costButton);
@@ -512,7 +502,6 @@
         private System.Windows.Forms.Button costButton;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Label gasType;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox regularBox;
         private System.Windows.Forms.TextBox premiumBox;
         private System.Windows.Forms.TextBox midBox;
