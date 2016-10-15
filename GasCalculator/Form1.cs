@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Due: October 14 2016, Created by Sam Wyatt, calculates gas prices and fullness of your car.
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace GasCalculator
 {
     public partial class storeInterface : Form
     {
+        //Declair variables 
         const double GAS_PRIEMIUM = 1.019;
         const double GAS_REGULAR = 0.869;
         const double GAS_MID = 0.946;
@@ -34,19 +36,12 @@ namespace GasCalculator
 
         private void storeInterface_Load(object sender, EventArgs e)
         {
-            Graphics lines = this.CreateGraphics();
-            Pen redPen = new Pen(Color.Red, 4);
-            lines.DrawLine(redPen, 10, 30, 400, 30);
-            lines.DrawLine(redPen, 480, 30, 700, 30);
-
-            Graphics gas = this.CreateGraphics();
-            gas.DrawImage(Properties.Resources.fuel_gauge, 400, 100, 150 , 250);
-           
+            //hide rates
             regularBox.Visible = false;
             midBox.Visible = false;
             premiumBox.Visible = false;
         }
-
+        //The following series of events enables you to see the rate of the gas type when you hover over them
         private void regCheck_MouseHover(object sender, EventArgs e)
         {
             regularBox.Visible = true;
@@ -77,10 +72,8 @@ namespace GasCalculator
             premiumBox.Visible = false;
         }
 
-        private void costButton_Click(object sender, EventArgs e)//Calculates Total Cost
+        private void costButton_Click(object sender, EventArgs e)  //Calculates Total Cost
         {
-            //posibly have a title screen so that a click event can be made other than the load form
-
             double gasRate;
             double vehicalType;
             gasIn = fuelAmount.Text;
@@ -88,6 +81,7 @@ namespace GasCalculator
             spend = moneyRequest.Text;
             tender = tenderBox.Text;
 
+            //Setup graphics and draw red rectangle around the print button
             Graphics box = CreateGraphics();
             SolidBrush whiteBrush = new SolidBrush(Color.White);
             SolidBrush redBrush = new SolidBrush(Color.Red);
@@ -123,23 +117,24 @@ namespace GasCalculator
 
                 if (option1.Checked) // Checks which option you chose
                 {
-                    message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
-                    outputLabel.Text = "The cost is: " + message.ToString("C");
+                    message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType; //calculates cost
+                    outputLabel.Text = "The cost is: " + message.ToString("C"); //displays cost
                 }
                 else
                 {
+                    //calculates percent fullness
                     message = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
                     if (message > 100)
                     {
                         message = (1 - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
                         outputLabel.Text = "Your tank is over filled.\nThe amount of money needed\nto fill your tank is: "
-                        + message.ToString(".##");           
+                        + message.ToString(".##");
                     }
                     else
                     {
                         message = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
                         outputLabel.Text = "Your tank is: " + message.ToString(".##") + "% full.";
-                    }                   
+                    }
                 }
             }
             catch
@@ -197,7 +192,7 @@ namespace GasCalculator
                 else
                 {
                     outputLabel.Text = "Your change is: " + change.ToString("C");
-                }             
+                }
             }
             catch
             {
@@ -222,8 +217,8 @@ namespace GasCalculator
             Graphics print = this.CreateGraphics();
             SolidBrush whiteBrush = new SolidBrush(Color.White);
             SolidBrush textBrush = new SolidBrush(Color.Black);
-            Font printFont = new Font("Courier New", 12);
-            Font smallFont = new Font("Courier New", 10);
+            Font printFont = new Font("Courier New", 11, FontStyle.Bold);
+            Font smallFont = new Font("Courier New", 9);
 
 
             print.FillRectangle(whiteBrush, 735, 20, 225, 400);
@@ -239,7 +234,7 @@ namespace GasCalculator
 
             if (regCheck.Checked)
             {
-                gasRate = GAS_REGULAR; 
+                gasRate = GAS_REGULAR;
             }
             else if (midCheck.Checked)
             {
@@ -258,7 +253,7 @@ namespace GasCalculator
             {
                 vehicalType = truckV;
             }
-            else 
+            else
             {
                 vehicalType = miniV;
             }
@@ -267,40 +262,41 @@ namespace GasCalculator
             {
                 message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType; //cost    
 
-                print.DrawString("Sub Total:", printFont, textBrush, 765, 60);
-                print.DrawString(message.ToString("C"), printFont, textBrush, 795, 90);
-                print.DrawString("Taxes: 13%", printFont, textBrush, 765, 120);
+                print.DrawString("Sub Total:", smallFont, textBrush, 765, 60);
+                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 80);
+                print.DrawString("Taxes: 13%", smallFont, textBrush, 765, 100);
 
                 message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 0.13;
-                print.DrawString(message.ToString("C"), printFont, textBrush, 795, 150);
+                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 120);
 
                 message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 1.13;
-                print.DrawString("Total:", printFont, textBrush, 765, 180);
-                print.DrawString(message.ToString("C"), printFont, textBrush, 795, 210);
+                print.DrawString("Total:", smallFont, textBrush, 765, 140);
+                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 160);
 
-                print.DrawString("Amount of gas:", printFont, textBrush, 765, 240);
+                print.DrawString("Amount of gas:", smallFont, textBrush, 765, 180);
                 message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * vehicalType;
-                print.DrawString(message.ToString("##.## L"), printFont, textBrush, 795, 270);
+                print.DrawString(message.ToString("##.## L"), smallFont, textBrush, 795, 200);
 
-                print.DrawString("Tender Amount:", printFont, textBrush, 765, 300);
+                print.DrawString("Tender Amount:", smallFont, textBrush, 765, 220);
                 message = Convert.ToDouble(tender);
-                print.DrawString(message.ToString("C"), printFont, textBrush, 795, 330);
+                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 240);
 
-                print.DrawString("Change:", printFont, textBrush, 765, 360);
+                print.DrawString("Change:", smallFont, textBrush, 765, 260);
                 change = Convert.ToDouble(tender) - ((Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType);
-                print.DrawString(change.ToString("C"), printFont, textBrush, 795, 390);
-                //print.DrawString("Thank you.", printFont, textBrush, 765, 300);
+                print.DrawString(change.ToString("C"), smallFont, textBrush, 795, 280);
+
+                print.DrawString("Thank you.", printFont, textBrush, 765, 350);
             }
 
-            /*else if (option2.Checked)
+            else
             {
-                message = ((Convert.ToDouble(tender) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;//cost    
-                print.DrawString("Sub Total:", printFont, textBrush, 765, 60);
-                print.DrawString("Your tank is: " + message.ToString("##.##") + "% full", printFont, textBrush, 795, 90);
-                
-            }*/
-            
-
+                message = Convert.ToDouble(moneyRequest.Text) / gasRate;
+                print.DrawString(message.ToString("##.## L"), smallFont, textBrush, 795, 80);
+                print.DrawString("Amount of gas recived:", smallFont, textBrush, 765, 60);
+                print.DrawString("Rate:", smallFont, textBrush, 765, 100);
+                print.DrawString(gasRate.ToString("$ #.### / L"), smallFont, textBrush, 795, 120);
+                print.DrawString("Thank you.", printFont, textBrush, 765, 350);
+            }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)//Resets everything 
@@ -322,9 +318,9 @@ namespace GasCalculator
             SolidBrush navyBrush = new SolidBrush(Color.Navy);
             box.FillRectangle(navyBrush, 30, 365, 250, 65);
             box.FillRectangle(navyBrush, 500, 375, 150, 65);
-            this.Size = new Size(721, 484);         
-        }       
- 
+            this.Size = new Size(721, 484);
+        }
+
         //When a check box is checked the other options are disabled, when it is unchecked it goes back to normal
         private void option1_CheckStateChanged(object sender, EventArgs e)
         {
@@ -402,7 +398,7 @@ namespace GasCalculator
 
         private void carCheck_CheckStateChanged(object sender, EventArgs e)
         {
-            if (truckCheck.Enabled == true && miniCheck.Enabled ==true)
+            if (truckCheck.Enabled == true && miniCheck.Enabled == true)
             {
                 truckCheck.Enabled = false;
                 miniCheck.Enabled = false;
