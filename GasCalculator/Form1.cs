@@ -19,15 +19,22 @@ namespace GasCalculator
         const double GAS_PRIEMIUM = 1.019;
         const double GAS_REGULAR = 0.869;
         const double GAS_MID = 0.946;
-        double carV = 49.9;
-        double truckV = 87;
-        double miniV = 76;
+        const double CAR_V = 49.9;
+        const double TRUCK_V = 87;
+        const double MINI_V = 76;
         string gasIn;
         string gasOut;
         string spend;
         string tender;
-        double message;
+        double cost;
+        double fuel;
+        double given;
+        double tax;
+        double costWithoutTax;
         double change;
+        double gasAmount;
+        double gasRate;
+        double vehicalType;
 
         public storeInterface()
         {
@@ -74,19 +81,9 @@ namespace GasCalculator
 
         private void costButton_Click(object sender, EventArgs e)  //Calculates Total Cost
         {
-            double gasRate;
-            double vehicalType;
             gasIn = fuelAmount.Text;
             gasOut = fuelNeeded.Text;
-            spend = moneyRequest.Text;
-            tender = tenderBox.Text;
-
-            //Setup graphics and draw red rectangle around the print button
-            Graphics box = CreateGraphics();
-            SolidBrush whiteBrush = new SolidBrush(Color.White);
-            SolidBrush redBrush = new SolidBrush(Color.Red);
-            box.FillRectangle(redBrush, 500, 375, 150, 65);
-
+            
             try
             {
                 if (regCheck.Checked) // Checks for what fuel type
@@ -104,135 +101,43 @@ namespace GasCalculator
 
                 if (carCheck.Checked) // Checks for what vehical type
                 {
-                    vehicalType = carV;
+                    vehicalType = CAR_V;
                 }
                 else if (truckCheck.Checked)
                 {
-                    vehicalType = truckV;
+                    vehicalType = TRUCK_V;
                 }
                 else
                 {
-                    vehicalType = miniV;
+                    vehicalType = MINI_V;
                 }
 
-                if (option1.Checked) // Checks which option you chose
+                costWithoutTax = ((Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType);//set for the print
+                tax = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 0.13;//set for the print
+                
+                if (option1.Checked)
                 {
-                    message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType; //calculates cost
-                    outputLabel.Text = "The cost is: " + message.ToString("C"); //displays cost
-                }
-                else
-                {
-                    //calculates percent fullness
-                    message = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
-                    if (message > 100)
-                    {
-                        message = (1 - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
-                        outputLabel.Text = "Your tank is over filled.\nThe amount of money needed\nto fill your tank is: "
-                        + message.ToString(".##");
-                    }
-                    else
-                    {
-                        message = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
-                        outputLabel.Text = "Your tank is: " + message.ToString(".##") + "% full.";
-                    }
+                    cost = ((Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType) * 1.13; //calculates cost
+                    outputLabel1.Text = "The cost is: " + cost.ToString("C");
+
+                    gasIn = fuelAmount.Text;
+                    gasOut = fuelNeeded.Text;
+                    gasAmount = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * vehicalType; //set for the print
                 }
             }
             catch
             {
-                outputLabel.Text = "Please remember to fill all requirements. \nCheck the help section above if needed.";
+                outputLabel2.ForeColor = Color.Navy;
+                outputLabel1.Text = "Please remember to fill all requirements. \nCheck the help section above if needed.";
             }
         }
 
-        private void changeButton_Click(object sender, EventArgs e)     //Calculates Change
+        private void fullButton_Click(object sender, EventArgs e)
         {
-            double gasRate;
-            double vehicalType;
-            gasIn = fuelAmount.Text;
-            gasOut = fuelNeeded.Text;
-            tender = tenderBox.Text;
-
-            try
-            {
-                if (regCheck.Checked) // Checks for what fuel type
-                {
-                    gasRate = GAS_REGULAR;
-                }
-
-                else if (midCheck.Checked)
-                {
-                    gasRate = GAS_MID;
-                }
-
-                else
-                {
-                    gasRate = GAS_PRIEMIUM;
-                }
-
-                if (carCheck.Checked) // Checks for what vehical type
-                {
-                    vehicalType = carV;
-                }
-
-                else if (truckCheck.Checked)
-                {
-                    vehicalType = truckV;
-                }
-
-                else
-                {
-                    vehicalType = miniV;
-                }
-
-                change = Convert.ToDouble(tender) - ((Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType);
-
-                if (change < 0)
-                {
-                    outputLabel.Text = "There are insuficient funds.";
-                }
-                else
-                {
-                    outputLabel.Text = "Your change is: " + change.ToString("C");
-                }
-            }
-            catch
-            {
-                outputLabel.Text = "Please remember to fill all requirements. \nCheck the help section above if needed.";
-            }
-        }
-
-        private void printButton_Click(object sender, EventArgs e)//Prints Receipt
-        {
-            int loopNumber = 300;
-            int xr = 721;
-            for (int x = 0; x < loopNumber; x++)
-            {
-                this.Size = new Size(xr, 484);
-                Thread.Sleep(1);
-                xr++;
-            }
-
-            //message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
-            //outputLabel.Text = "The cost is: " + message.ToString("C");
-
-            Graphics print = this.CreateGraphics();
-            SolidBrush whiteBrush = new SolidBrush(Color.White);
-            SolidBrush textBrush = new SolidBrush(Color.Black);
-            Font printFont = new Font("Courier New", 11, FontStyle.Bold);
-            Font smallFont = new Font("Courier New", 9);
-
-
-            print.FillRectangle(whiteBrush, 735, 20, 225, 400);
-            print.DrawString("THE GAS CORNER", printFont, textBrush, 765, 30);
-
-            //print.DrawString(DateTime.ToString("D"), smallFont, textBrush, 765, 45);
-
-            double gasRate;
-            double vehicalType;
-            gasIn = fuelAmount.Text;
-            gasOut = fuelNeeded.Text;
-            tender = tenderBox.Text;
-
-            if (regCheck.Checked)
+            ///The if statments need to be made again because you can't click the cost button when option 2 is selected and because 
+            ///I don't know how to declair if statements globally.
+     
+            if (regCheck.Checked) // Checks for what fuel type
             {
                 gasRate = GAS_REGULAR;
             }
@@ -245,65 +150,152 @@ namespace GasCalculator
                 gasRate = GAS_PRIEMIUM;
             }
 
-            if (carCheck.Checked)
+            if (carCheck.Checked) // Checks for what vehical type
             {
-                vehicalType = carV;
+                vehicalType = CAR_V;
             }
             else if (truckCheck.Checked)
             {
-                vehicalType = truckV;
+                vehicalType = TRUCK_V;
             }
             else
             {
-                vehicalType = miniV;
+                vehicalType = MINI_V;
             }
+      
+            spend = moneyRequest.Text;
+            gasIn = fuelAmount.Text;
 
-            if (option1.Checked)
+            try
             {
-                message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType; //cost    
+                    fuel = ((Convert.ToDouble(spend) / gasRate) + (Convert.ToDouble(gasIn) * vehicalType)) / vehicalType * 100;
+                    if (fuel > 100)
+                    {
+                        fuel = (1 - Convert.ToDouble(gasIn)) * gasRate * vehicalType;
+                        outputLabel2.Text = "Your tank is over filled.\nThe amount of money needed\nto fill your tank is: "
+                        + fuel.ToString("C");
+                    }
+                    else
+                    {
+                        fuel = (((Convert.ToDouble(gasIn) * vehicalType) + (Convert.ToDouble(spend) / gasRate)) / vehicalType) * 100;
+                        outputLabel2.Text = "Your tank is: " + fuel.ToString(".##") + "% full.";
 
-                print.DrawString("Sub Total:", smallFont, textBrush, 765, 60);
-                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 80);
-                print.DrawString("Taxes: 13%", smallFont, textBrush, 765, 100);
-
-                message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 0.13;
-                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 120);
-
-                message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType * 1.13;
-                print.DrawString("Total:", smallFont, textBrush, 765, 140);
-                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 160);
-
-                print.DrawString("Amount of gas:", smallFont, textBrush, 765, 180);
-                message = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * vehicalType;
-                print.DrawString(message.ToString("##.## L"), smallFont, textBrush, 795, 200);
-
-                print.DrawString("Tender Amount:", smallFont, textBrush, 765, 220);
-                message = Convert.ToDouble(tender);
-                print.DrawString(message.ToString("C"), smallFont, textBrush, 795, 240);
-
-                print.DrawString("Change:", smallFont, textBrush, 765, 260);
-                change = Convert.ToDouble(tender) - ((Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * gasRate * vehicalType);
-                print.DrawString(change.ToString("C"), smallFont, textBrush, 795, 280);
-
-                print.DrawString("Thank you.", printFont, textBrush, 765, 350);
+                    gasIn = fuelAmount.Text;
+                    gasOut = fuelNeeded.Text;
+                    gasAmount = (Convert.ToDouble(gasOut) - Convert.ToDouble(gasIn)) * vehicalType; //set for the print
+                } 
             }
-
-            else
+            catch
             {
-                message = Convert.ToDouble(moneyRequest.Text) / gasRate;
-                print.DrawString(message.ToString("##.## L"), smallFont, textBrush, 795, 80);
-                print.DrawString("Amount of gas recived:", smallFont, textBrush, 765, 60);
-                print.DrawString("Rate:", smallFont, textBrush, 765, 100);
-                print.DrawString(gasRate.ToString("$ #.### / L"), smallFont, textBrush, 795, 120);
-                print.DrawString("Thank you.", printFont, textBrush, 765, 350);
+                outputLabel2.ForeColor = Color.Navy;
+                outputLabel2.Text = "Please remember to fill all\nrequirements. Check the help\nsection above if needed.";
+            }    
+        }
+
+        private void changeButton_Click(object sender, EventArgs e)     //Calculates Change
+        {
+            
+
+            try
+            {
+                tender = tenderBox.Text;
+                given = Convert.ToDouble(tender);
+                change = Convert.ToDouble(tender) - cost;
+                
+                if (change < 0)
+                {
+                    outputLabel1.Text = "There are insuficient funds.";
+                }
+                else if (change == given)
+                {
+                    outputLabel1.Text = "Please calculate cost first.";
+                }
+
+                else
+                {
+                    outputLabel1.Text = "The cost is: " + cost.ToString("C") +
+                        "\nYour change is: " + change.ToString("C");
+                }
             }
+            catch
+            {
+                outputLabel2.ForeColor = Color.Navy;
+                outputLabel1.Text = "Please remember to fill all requirements. \nCheck the help section above if needed.";
+            }
+        }
+
+        private void printButton_Click(object sender, EventArgs e)//Prints Receipt
+        {
+            try 
+            {
+                tender = tenderBox.Text; 
+                given = Convert.ToDouble(tender);
+                
+
+                this.Size = new Size(1021, 484);
+                Graphics print = this.CreateGraphics();
+                SolidBrush whiteBrush = new SolidBrush(Color.White);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                Font printFont = new Font("Courier New", 11, FontStyle.Bold);
+                Font smallFont = new Font("Courier New", 9);
+
+                    print.FillRectangle(whiteBrush, 735, 20, 225, 400);
+                    print.DrawString("THE GAS CORNER", printFont, textBrush, 765, 30);
+
+                    print.DrawString("Sub Total:", smallFont, textBrush, 765, 60);
+                    print.DrawString(costWithoutTax.ToString("C"), smallFont, textBrush, 900, 60);
+
+                    print.DrawString("Tax @ 13%:", smallFont, textBrush, 765, 100);
+                    print.DrawString(tax.ToString("C"), smallFont, textBrush, 900, 100);
+
+                    print.DrawString("Total:", smallFont, textBrush, 765, 140);                                
+                    print.DrawString(cost.ToString("C"), smallFont, textBrush, 900, 140);
+
+                    print.DrawString("Amount of gas:", smallFont, textBrush, 765, 180);
+                    print.DrawString(gasAmount.ToString("##.## L"), smallFont, textBrush, 895, 180);
+
+                    print.DrawString("Tender Amount:", smallFont, textBrush, 765, 220);
+                    print.DrawString(given.ToString("C"), smallFont, textBrush, 900, 220);
+
+                    print.DrawString("Change:", smallFont, textBrush, 765, 260);
+                    print.DrawString(change.ToString("C"), smallFont, textBrush, 900, 260);
+
+                    print.DrawString("Thank you.", printFont, textBrush, 765, 350);
+
+                    /*int loopNumber = 300;
+                    int xr = 721;
+                    for (int x = 0; x < loopNumber; x++)
+                    {
+                        this.Size = new Size(xr, 484);
+                        Thread.Sleep(1);
+                        xr++;
+                    }*/
+                    
+                //}
+
+                //else if (option2.Checked)
+                //{
+                    /*cost = Convert.ToDouble(moneyRequest.Text) / gasRate;
+                    print.DrawString(cost.ToString("##.## L"), smallFont, textBrush, 795, 80);
+                    print.DrawString("Amount of gas recived:", smallFont, textBrush, 765, 60);
+                    print.DrawString("Rate:", smallFont, textBrush, 765, 100);
+                    print.DrawString(gasRate.ToString("$ #.### / L"), smallFont, textBrush, 795, 120);
+                    print.DrawString("Thank you.", printFont, textBrush, 765, 350);*/
+                //}
+            }
+            catch
+            {
+                outputLabel2.ForeColor = Color.Red;
+                outputLabel2.Text = "Please remember to fill all\nrequirements. Check the help\nsection above if needed.";
+            }
+            
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)//Resets everything 
         {
-            fuelAmount.Text = "";
-            fuelNeeded.Text = "";
-            tenderBox.Text = "";
+            fuelAmount.Text = "Ex. 50% full = 0.5";
+            fuelNeeded.Text = "Ex. 100% full = 1";
+            tenderBox.Text = "Tendered Amount";
             moneyRequest.Text = "";
             regCheck.Checked = false;
             midCheck.Checked = false;
@@ -313,11 +305,8 @@ namespace GasCalculator
             carCheck.Checked = false;
             truckCheck.Checked = false;
             miniCheck.Checked = false;
-            outputLabel.Text = "";
-            Graphics box = this.CreateGraphics();
-            SolidBrush navyBrush = new SolidBrush(Color.Navy);
-            box.FillRectangle(navyBrush, 30, 365, 250, 65);
-            box.FillRectangle(navyBrush, 500, 375, 150, 65);
+            outputLabel1.Text = "";
+            outputLabel2.Text = "";
             this.Size = new Size(721, 484);
         }
 
@@ -328,11 +317,23 @@ namespace GasCalculator
             {
                 option2.Enabled = false;
                 moneyRequest.Enabled = false;
+                fullButton.Enabled = false;
+                fullButton.BackColor = Color.Black;
+                reqirements3.ForeColor = Color.Black;
+                moneyRequest.BackColor = Color.Black;
+                outputLabel2.Text = "";
             }
             else
             {
                 option2.Enabled = true;
                 moneyRequest.Enabled = true;
+                fullButton.Enabled = true;
+                fullButton.BackColor = Color.FromArgb(224,224,224);
+                reqirements3.ForeColor = Color.White;
+                moneyRequest.BackColor = Color.White;
+                fuelNeeded.Text = "Ex. 100% full = 1";
+                tenderBox.Text = "Tendered Amount";
+                outputLabel1.Text = "";
             }
         }
 
@@ -344,6 +345,14 @@ namespace GasCalculator
                 fuelNeeded.Enabled = false;
                 tenderBox.Enabled = false;
                 changeButton.Enabled = false;
+                costButton.Enabled = false;
+                fuelNeeded.BackColor = Color.Black;
+                tenderBox.BackColor = Color.Black;
+                fuelNeeded.Text = "";
+                tenderBox.Text = "";
+                costButton.BackColor = Color.Black;
+                changeButton.BackColor = Color.Black;
+                outputLabel1.Text = "";
             }
             else
             {
@@ -351,6 +360,15 @@ namespace GasCalculator
                 fuelNeeded.Enabled = true;
                 tenderBox.Enabled = true;
                 changeButton.Enabled = true;
+                costButton.Enabled = true;
+                fuelNeeded.BackColor = Color.White;
+                tenderBox.BackColor = Color.White;
+                fuelNeeded.Text = "Ex. 100% full = 1";
+                tenderBox.Text = "Tendered Amount";
+                costButton.BackColor = Color.FromArgb(224, 224, 224); 
+                changeButton.BackColor = Color.FromArgb(224, 224, 224);
+                moneyRequest.Text = "";
+                outputLabel2.Text = "";          
             }
         }
 
@@ -436,6 +454,15 @@ namespace GasCalculator
                 truckCheck.Enabled = true;
                 carCheck.Enabled = true;
             }
+        }
+
+        private void storeInterface_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics box = this.CreateGraphics();
+            SolidBrush redBrush = new SolidBrush(Color.Red);
+            Pen redPen = new Pen(Color.Red, 3);
+            box.FillRectangle(redBrush, 16, 405, 680, 33);
+            box.DrawLine(redPen, 16, 47, 690, 47);
         }
     }
 }

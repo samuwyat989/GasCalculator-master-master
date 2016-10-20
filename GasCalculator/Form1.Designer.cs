@@ -40,7 +40,7 @@
             this.amountTitle = new System.Windows.Forms.Label();
             this.fuelAmount = new System.Windows.Forms.TextBox();
             this.moneyRequest = new System.Windows.Forms.TextBox();
-            this.outputLabel = new System.Windows.Forms.Label();
+            this.outputLabel1 = new System.Windows.Forms.Label();
             this.regCheck = new System.Windows.Forms.CheckBox();
             this.midCheck = new System.Windows.Forms.CheckBox();
             this.premCheck = new System.Windows.Forms.CheckBox();
@@ -56,23 +56,22 @@
             this.printButton = new System.Windows.Forms.Button();
             this.tenderBox = new System.Windows.Forms.TextBox();
             this.changeButton = new System.Windows.Forms.Button();
-            this.requirements = new System.Windows.Forms.Label();
-            this.requirements2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.reqirements3 = new System.Windows.Forms.Label();
+            this.fullButton = new System.Windows.Forms.Button();
+            this.outputLabel2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // costButton
             // 
+            this.costButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.costButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costButton.Location = new System.Drawing.Point(356, 377);
+            this.costButton.Location = new System.Drawing.Point(355, 165);
             this.costButton.Name = "costButton";
-            this.costButton.Size = new System.Drawing.Size(126, 56);
+            this.costButton.Size = new System.Drawing.Size(126, 38);
             this.costButton.TabIndex = 4;
-            this.costButton.Text = "Calculate Total";
-            this.costButton.UseVisualStyleBackColor = true;
+            this.costButton.Text = "Calculate Cost";
+            this.costButton.UseVisualStyleBackColor = false;
             this.costButton.Click += new System.EventHandler(this.costButton_Click);
             // 
             // title
@@ -126,7 +125,7 @@
             this.carType.AutoSize = true;
             this.carType.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.carType.ForeColor = System.Drawing.Color.White;
-            this.carType.Location = new System.Drawing.Point(12, 223);
+            this.carType.Location = new System.Drawing.Point(9, 234);
             this.carType.Name = "carType";
             this.carType.Size = new System.Drawing.Size(296, 17);
             this.carType.TabIndex = 17;
@@ -137,7 +136,7 @@
             this.pathType.AutoSize = true;
             this.pathType.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pathType.ForeColor = System.Drawing.Color.White;
-            this.pathType.Location = new System.Drawing.Point(352, 153);
+            this.pathType.Location = new System.Drawing.Point(352, 67);
             this.pathType.Name = "pathType";
             this.pathType.Size = new System.Drawing.Size(248, 18);
             this.pathType.TabIndex = 21;
@@ -145,10 +144,11 @@
             // 
             // fuelNeeded
             // 
+            this.fuelNeeded.BackColor = System.Drawing.Color.White;
             this.fuelNeeded.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.fuelNeeded.Location = new System.Drawing.Point(560, 209);
+            this.fuelNeeded.Location = new System.Drawing.Point(356, 139);
             this.fuelNeeded.Name = "fuelNeeded";
-            this.fuelNeeded.Size = new System.Drawing.Size(100, 20);
+            this.fuelNeeded.Size = new System.Drawing.Size(125, 20);
             this.fuelNeeded.TabIndex = 22;
             this.fuelNeeded.Text = "Ex. 100% full = 1";
             // 
@@ -157,7 +157,7 @@
             this.amountTitle.AutoSize = true;
             this.amountTitle.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountTitle.ForeColor = System.Drawing.Color.White;
-            this.amountTitle.Location = new System.Drawing.Point(353, 67);
+            this.amountTitle.Location = new System.Drawing.Point(12, 343);
             this.amountTitle.Name = "amountTitle";
             this.amountTitle.Size = new System.Drawing.Size(308, 18);
             this.amountTitle.TabIndex = 23;
@@ -166,7 +166,7 @@
             // fuelAmount
             // 
             this.fuelAmount.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.fuelAmount.Location = new System.Drawing.Point(373, 100);
+            this.fuelAmount.Location = new System.Drawing.Point(16, 377);
             this.fuelAmount.Name = "fuelAmount";
             this.fuelAmount.Size = new System.Drawing.Size(100, 20);
             this.fuelAmount.TabIndex = 24;
@@ -174,21 +174,22 @@
             // 
             // moneyRequest
             // 
-            this.moneyRequest.Location = new System.Drawing.Point(561, 319);
+            this.moneyRequest.BackColor = System.Drawing.Color.White;
+            this.moneyRequest.Location = new System.Drawing.Point(355, 286);
             this.moneyRequest.Name = "moneyRequest";
-            this.moneyRequest.Size = new System.Drawing.Size(100, 20);
+            this.moneyRequest.Size = new System.Drawing.Size(125, 20);
             this.moneyRequest.TabIndex = 25;
             // 
-            // outputLabel
+            // outputLabel1
             // 
-            this.outputLabel.AutoSize = true;
-            this.outputLabel.BackColor = System.Drawing.Color.White;
-            this.outputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputLabel.ForeColor = System.Drawing.Color.Navy;
-            this.outputLabel.Location = new System.Drawing.Point(13, 348);
-            this.outputLabel.Name = "outputLabel";
-            this.outputLabel.Size = new System.Drawing.Size(0, 13);
-            this.outputLabel.TabIndex = 26;
+            this.outputLabel1.AutoSize = true;
+            this.outputLabel1.BackColor = System.Drawing.Color.White;
+            this.outputLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputLabel1.ForeColor = System.Drawing.Color.Navy;
+            this.outputLabel1.Location = new System.Drawing.Point(440, 223);
+            this.outputLabel1.Name = "outputLabel1";
+            this.outputLabel1.Size = new System.Drawing.Size(0, 13);
+            this.outputLabel1.TabIndex = 26;
             // 
             // regCheck
             // 
@@ -256,7 +257,7 @@
             this.miniCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.miniCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.miniCheck.ForeColor = System.Drawing.Color.White;
-            this.miniCheck.Location = new System.Drawing.Point(15, 269);
+            this.miniCheck.Location = new System.Drawing.Point(82, 266);
             this.miniCheck.Name = "miniCheck";
             this.miniCheck.Size = new System.Drawing.Size(79, 19);
             this.miniCheck.TabIndex = 30;
@@ -273,7 +274,7 @@
             this.truckCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.truckCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.truckCheck.ForeColor = System.Drawing.Color.White;
-            this.truckCheck.Location = new System.Drawing.Point(15, 294);
+            this.truckCheck.Location = new System.Drawing.Point(181, 266);
             this.truckCheck.Name = "truckCheck";
             this.truckCheck.Size = new System.Drawing.Size(58, 19);
             this.truckCheck.TabIndex = 31;
@@ -290,7 +291,7 @@
             this.carCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.carCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.carCheck.ForeColor = System.Drawing.Color.White;
-            this.carCheck.Location = new System.Drawing.Point(16, 244);
+            this.carCheck.Location = new System.Drawing.Point(12, 266);
             this.carCheck.Name = "carCheck";
             this.carCheck.Size = new System.Drawing.Size(45, 19);
             this.carCheck.TabIndex = 32;
@@ -307,7 +308,7 @@
             this.option1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.option1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option1.ForeColor = System.Drawing.Color.White;
-            this.option1.Location = new System.Drawing.Point(355, 174);
+            this.option1.Location = new System.Drawing.Point(355, 101);
             this.option1.Name = "option1";
             this.option1.Size = new System.Drawing.Size(323, 19);
             this.option1.TabIndex = 33;
@@ -324,7 +325,7 @@
             this.option2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.option2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.option2.ForeColor = System.Drawing.Color.White;
-            this.option2.Location = new System.Drawing.Point(356, 294);
+            this.option2.Location = new System.Drawing.Point(355, 256);
             this.option2.Name = "option2";
             this.option2.Size = new System.Drawing.Size(345, 19);
             this.option2.TabIndex = 34;
@@ -357,7 +358,7 @@
             // 
             this.thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem.Name = "thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem";
             this.thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem.Size = new System.Drawing.Size(432, 22);
-            this.thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem.Text = "This is version 1.0 by Sam Wyatt as the second summative in ICS3U. ";
+            this.thisIsVersion10BySamWyattAsTheSecondSummativeInICS3UToolStripMenuItem.Text = "This is version 1.1 by Sam Wyatt as the second summative in ICS3U. ";
             // 
             // newToolStripMenuItem
             // 
@@ -369,7 +370,7 @@
             // 
             // printButton
             // 
-            this.printButton.Location = new System.Drawing.Point(528, 398);
+            this.printButton.Location = new System.Drawing.Point(282, 410);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(100, 23);
             this.printButton.TabIndex = 36;
@@ -379,77 +380,59 @@
             // 
             // tenderBox
             // 
+            this.tenderBox.BackColor = System.Drawing.Color.White;
             this.tenderBox.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.tenderBox.Location = new System.Drawing.Point(355, 209);
+            this.tenderBox.Location = new System.Drawing.Point(490, 139);
             this.tenderBox.Name = "tenderBox";
-            this.tenderBox.Size = new System.Drawing.Size(100, 20);
+            this.tenderBox.Size = new System.Drawing.Size(138, 20);
             this.tenderBox.TabIndex = 38;
             this.tenderBox.Text = "Tendered Amount";
             // 
             // changeButton
             // 
-            this.changeButton.Location = new System.Drawing.Point(355, 235);
+            this.changeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.changeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeButton.Location = new System.Drawing.Point(490, 165);
             this.changeButton.Name = "changeButton";
-            this.changeButton.Size = new System.Drawing.Size(100, 23);
+            this.changeButton.Size = new System.Drawing.Size(138, 38);
             this.changeButton.TabIndex = 39;
             this.changeButton.Text = "Calculate Change";
-            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.UseVisualStyleBackColor = false;
             this.changeButton.Click += new System.EventHandler(this.changeButton_Click);
-            // 
-            // requirements
-            // 
-            this.requirements.AutoSize = true;
-            this.requirements.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requirements.ForeColor = System.Drawing.Color.White;
-            this.requirements.Location = new System.Drawing.Point(492, 100);
-            this.requirements.Name = "requirements";
-            this.requirements.Size = new System.Drawing.Size(187, 15);
-            this.requirements.TabIndex = 40;
-            this.requirements.Text = "Please express the fullness ";
-            // 
-            // requirements2
-            // 
-            this.requirements2.AutoSize = true;
-            this.requirements2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requirements2.ForeColor = System.Drawing.Color.White;
-            this.requirements2.Location = new System.Drawing.Point(492, 115);
-            this.requirements2.Name = "requirements2";
-            this.requirements2.Size = new System.Drawing.Size(190, 15);
-            this.requirements2.TabIndex = 41;
-            this.requirements2.Text = "as a percent in decimal form";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(506, 259);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 15);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "as a percent in decimal form";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(506, 244);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 15);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Please express the fullness ";
             // 
             // reqirements3
             // 
             this.reqirements3.AutoSize = true;
             this.reqirements3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reqirements3.ForeColor = System.Drawing.Color.White;
-            this.reqirements3.Location = new System.Drawing.Point(506, 346);
+            this.reqirements3.Location = new System.Drawing.Point(487, 291);
             this.reqirements3.Name = "reqirements3";
             this.reqirements3.Size = new System.Drawing.Size(198, 15);
             this.reqirements3.TabIndex = 44;
             this.reqirements3.Text = "Do not use symbols or spaces";
+            // 
+            // fullButton
+            // 
+            this.fullButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.fullButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fullButton.Location = new System.Drawing.Point(356, 317);
+            this.fullButton.Name = "fullButton";
+            this.fullButton.Size = new System.Drawing.Size(126, 44);
+            this.fullButton.TabIndex = 45;
+            this.fullButton.Text = "Calculate Fullness";
+            this.fullButton.UseVisualStyleBackColor = false;
+            this.fullButton.Click += new System.EventHandler(this.fullButton_Click);
+            // 
+            // outputLabel2
+            // 
+            this.outputLabel2.AutoSize = true;
+            this.outputLabel2.BackColor = System.Drawing.Color.White;
+            this.outputLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputLabel2.ForeColor = System.Drawing.Color.Navy;
+            this.outputLabel2.Location = new System.Drawing.Point(492, 317);
+            this.outputLabel2.Name = "outputLabel2";
+            this.outputLabel2.Size = new System.Drawing.Size(0, 13);
+            this.outputLabel2.TabIndex = 46;
             // 
             // storeInterface
             // 
@@ -457,11 +440,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(705, 445);
+            this.Controls.Add(this.outputLabel2);
+            this.Controls.Add(this.fullButton);
             this.Controls.Add(this.reqirements3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.requirements2);
-            this.Controls.Add(this.requirements);
             this.Controls.Add(this.changeButton);
             this.Controls.Add(this.tenderBox);
             this.Controls.Add(this.printButton);
@@ -473,7 +454,7 @@
             this.Controls.Add(this.premCheck);
             this.Controls.Add(this.midCheck);
             this.Controls.Add(this.regCheck);
-            this.Controls.Add(this.outputLabel);
+            this.Controls.Add(this.outputLabel1);
             this.Controls.Add(this.moneyRequest);
             this.Controls.Add(this.fuelAmount);
             this.Controls.Add(this.amountTitle);
@@ -491,6 +472,7 @@
             this.Name = "storeInterface";
             this.Text = "The Corner Gas";
             this.Load += new System.EventHandler(this.storeInterface_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.storeInterface_Paint);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -511,7 +493,7 @@
         private System.Windows.Forms.Label amountTitle;
         private System.Windows.Forms.TextBox fuelAmount;
         private System.Windows.Forms.TextBox moneyRequest;
-        private System.Windows.Forms.Label outputLabel;
+        private System.Windows.Forms.Label outputLabel1;
         private System.Windows.Forms.CheckBox regCheck;
         private System.Windows.Forms.CheckBox midCheck;
         private System.Windows.Forms.CheckBox premCheck;
@@ -527,11 +509,9 @@
         private System.Windows.Forms.Button printButton;
         private System.Windows.Forms.TextBox tenderBox;
         private System.Windows.Forms.Button changeButton;
-        private System.Windows.Forms.Label requirements;
-        private System.Windows.Forms.Label requirements2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label reqirements3;
+        private System.Windows.Forms.Button fullButton;
+        private System.Windows.Forms.Label outputLabel2;
     }
 }
 
